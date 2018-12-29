@@ -22,11 +22,10 @@ Connection list:
 | 5 |  | CE | ge 
 ***
 
-Compiled with Arduino 1.8.8
-ProZessor: ATmega328P (Old Bootloader)
-Library:
-Ethernet2 by Various Version 1.0.4
-MySensors by The MySensors Team Version 2.3.1
+Compiled with Arduino 1.8.8  
+Processor: ATmega328P (Old Bootloader)  
+"Ethernet2.h" by Various Version 1.0.4  
+"MySensors.h" by The MySensors Team Version 2.3.1
 
 ```ino
 /*----------------------------------------------
@@ -50,17 +49,19 @@ MySensors by The MySensors Team Version 2.3.1
 #define MY_RF24_CE_PIN 5
 #define MY_RF24_CS_PIN 6
 
-// Enable gateway ethernet module type
+// IMPORTANT: Enable gateway ethernet module type ENC28J60
 #define MY_GATEWAY_ENC28J60
 
 #define MY_IP_ADDRESS 192,168,1,2
-// Change the MAC Address to fit on your network
+
+// IMPORTANT: Change the MAC Address to fit on your network
 #define MY_MAC_ADDRESS 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 
 // If using static ip you can define Gateway and Subnet address as well
 //#define MY_IP_GATEWAY_ADDRESS 192,168,1,1
 //#define MY_IP_SUBNET_ADDRESS 255,255,255,0
 
+// The port to keep open on node server mode
 #define MY_PORT 5003
 
 // Enable inclusion mode
@@ -85,13 +86,14 @@ MySensors by The MySensors Team Version 2.3.1
 #include <Ethernet2.h>
 #include <MySensors.h>
 
-//----- Ethernet configuration
+// IMPORTANT: Ethernet configuration
 byte mac[] = { MY_MAC_ADDRESS };
 byte ip[] = { MY_IP_ADDRESS };
 
 //---------------------------------------------------------
 void setup()
 {
+  // IMPORTANT
   Ethernet.begin(mac, ip);
 }
 
